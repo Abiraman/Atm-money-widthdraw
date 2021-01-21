@@ -17,15 +17,19 @@ let total_amount = 0;
 function getNoteText(number) {
   return note[number];
 }
+// Split money with high dinomination
 function money_split(money) {
   let currencyStack_dup = {};
+  // clone original currencyStack for update denominations
   Object.assign(currencyStack_dup, currencyStack);
   let money_count = 0;
+  // sort array desc for denomination
   var s_note = Object.keys(note).sort(function (a, b) {
     return b - a;
   });
   s_note.forEach((element) => {
     let count = parseInt(money / element);
+    //deteck if money is greater than denomination
     if (count >= 1) {
       if (currencyStack_dup[getNoteText(element)] >= count) {
         currencyStack_dup[getNoteText(element)] -= count;
@@ -42,6 +46,7 @@ function money_split(money) {
       }
     }
   });
+  // money entered by user and calculated money
   if (money_count === total_amount) {
     currencyStack = currencyStack_dup;
     return atm;
