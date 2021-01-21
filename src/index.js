@@ -1,4 +1,4 @@
-// ATM
+// ATM-money withdraw
 // 10 * 1000 + 2 * 2000 + 2 * 500 + 5 * 100 = 15,500
 let currencyStack = {
   thousand: 10,
